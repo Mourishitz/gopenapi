@@ -1,0 +1,13 @@
+/coffee/ice:
+  get:
+    tags:
+     - Ice Coffee
+    summary: "Ice Coffee Recipes."
+    description: "All ice coffee recipes retrieved from API."
+    operationId: ice-coffee 
+    responses:
+      "200":
+        $ref: "#/components/responses/IcedCoffee"
+      "500":
+        $ref: "#/components/responses/InternalServerError"
+

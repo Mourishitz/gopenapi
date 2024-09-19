@@ -1,0 +1,15 @@
+IcedCoffee:
+  type: object
+  properties:
+    title:
+      type: string
+    description:
+      type: string
+    ingredients:
+      type: array
+      items:
+        type: string
+    image: 
+      type: string
+    id:
+      type: number

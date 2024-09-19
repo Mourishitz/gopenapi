@@ -1,0 +1,9 @@
+title: Golang Open API YAML Merger.
+description: Go script to merge multiple YAML files into one single OpenAPI spec. As demo we are using a [sample coffee api](https://api.sampleapis.com/coffee/hot)
+version: 0.1
+termsOfService: http://github.com/Mourishitz/gopenapi
+contact:
+  email: gabrielmorishita@hotmail.com
+license:
+  name: CC BY-NC-ND 4.0
+  url: https://creativecommons.org/licenses/by-nc-nd/4.0/

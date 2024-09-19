@@ -1,0 +1,13 @@
+/coffee/hot:
+  get:
+    tags:
+     - Hot Coffee
+    summary: "Hot Coffee Recipes."
+    description: "All hot coffee recipes retrieved from API."
+    operationId: hot-coffee 
+    responses:
+      "200":
+        $ref: "#/components/responses/HotCoffee"
+      "500":
+        $ref: "#/components/responses/InternalServerError"
+

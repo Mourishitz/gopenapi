@@ -1,0 +1,110 @@
+openapi: 3.1.0
+info:
+    contact:
+        email: gabrielmorishita@hotmail.com
+    description: Go script to merge multiple YAML files into one single OpenAPI spec. As demo we are using a [sample coffee api](https://api.sampleapis.com/coffee/hot)
+    license:
+        name: CC BY-NC-ND 4.0
+        url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+    termsOfService: http://github.com/Mourishitz/gopenapi
+    title: Golang Open API YAML Merger.
+    version: 0.1
+security:
+    - bearerAuth: []
+tags:
+    - description: Routes for hot coffee recipes.
+      name: Hot Coffee
+    - description: Routes for iced coffee recipes.
+      name: Ice Coffee
+paths:
+    /coffee/hot:
+        get:
+            description: All hot coffee recipes retrieved from API.
+            operationId: hot-coffee
+            responses:
+                "200":
+                    $ref: '#/components/responses/HotCoffee'
+                "500":
+                    $ref: '#/components/responses/InternalServerError'
+            summary: Hot Coffee Recipes.
+            tags:
+                - Hot Coffee
+    /coffee/ice:
+        get:
+            description: All ice coffee recipes retrieved from API.
+            operationId: ice-coffee
+            responses:
+                "200":
+                    $ref: '#/components/responses/IcedCoffee'
+                "500":
+                    $ref: '#/components/responses/InternalServerError'
+            summary: Ice Coffee Recipes.
+            tags:
+                - Ice Coffee
+servers:
+    - url: http://localhost
+    - url: https://api.sampleapis.com/coffee
+components:
+    responses:
+        HotCoffee:
+            content:
+                application/json:
+                    schema:
+                        items:
+                            $ref: '#/components/schemas/HotCoffee'
+                        type: array
+            description: Array of Hot Coffee Recipes
+        IcedCoffee:
+            content:
+                application/json:
+                    schema:
+                        items:
+                            $ref: '#/components/schemas/IcedCoffee'
+                        type: array
+            description: Array of Iced Coffee Recipes
+        InternalServerError:
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            message:
+                                pattern: Server Error
+                                type: string
+                        type: object
+            description: Internal Server Error.
+    schemas:
+        HotCoffee:
+            properties:
+                description:
+                    type: string
+                id:
+                    type: number
+                image:
+                    type: string
+                ingredients:
+                    items:
+                        type: string
+                    type: array
+                title:
+                    type: string
+            type: object
+        IcedCoffee:
+            properties:
+                description:
+                    type: string
+                id:
+                    type: number
+                image:
+                    type: string
+                ingredients:
+                    items:
+                        type: string
+                    type: array
+                title:
+                    type: string
+            type: object
+    securitySchemes:
+        bearerAuth:
+            bearerFormat: JWT
+            scheme: bearer
+            type: http

@@ -1,0 +1,12 @@
+{
+  "base": "src/template.yml",
+  "info": "src/info.yml",
+  "security": "src/security.yml",
+  "tags": "src/modules/tags",
+  "paths": "src/modules/paths",
+  "components": "src/modules/components",
+  "schemas": "src/modules/schemas",
+  "requests": "src/modules/requests",
+  "definitions": "src/modules/definitions",
+  "servers": "src/servers.yml"
+}

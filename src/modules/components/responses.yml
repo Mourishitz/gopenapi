@@ -1,0 +1,28 @@
+responses:
+  InternalServerError:
+    description: "Internal Server Error."
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              pattern: "Server Error"
+  HotCoffee:
+    description: "Array of Hot Coffee Recipes"
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: "#/components/schemas/HotCoffee"
+  IcedCoffee:
+    description: "Array of Iced Coffee Recipes"
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: "#/components/schemas/IcedCoffee"
+
