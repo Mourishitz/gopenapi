@@ -18,7 +18,7 @@ An additional bundle was added to serve this YAML to an index.html. This bundle 
 Install using the release tag
 
 ```bash
-    go install github.com/mourishitz/gopenapi/gopenapi@release
+go install github.com/mourishitz/gopenapi/gopenapi@release
 ```
 
 If you wish to, you can also clone the project and use it as a template to your first Open API spec.
@@ -29,24 +29,50 @@ If you wish to, you can also clone the project and use it as a template to your 
 Clone the project
 
 ```bash
-  git clone https://github.com/Mourishitz/GOpenAPI
+git clone https://github.com/Mourishitz/GOpenAPI
 ```
 
 Go to the project directory
 
 ```bash
-  cd GOpenAPI
+cd GOpenAPI
 ```
 
 Compile your YAML files
 
 ```bash
-  go build -o ./build ./cmd
+go build -o ./build ./cmd
 ```
 
 Run the binary (or add it to your $PATH)
 
 ```bash
-  ./build
+./build
 ```
+
+
+## Quickstart
+
+This project requires only one file to work and that is `dirs.json`.
+Inside `dirs.json` you must have all OpenAPI keys that are necessary to build a great documentation
+
+An example of valid `dirs.json` would be:
+```json
+{
+  "base": "template.yml",
+  "info": "info.yml",
+  "security": "security.yml",
+  "tags": "./modules/tags",
+  "paths": "./modules/paths",
+  "components": "./modules/components",
+  "schemas": "./modules/schemas",
+  "requests": "./modules/requests",
+  "definitions": "./modules/definitions",
+  "servers": "servers.yml"
+}
+```
+
+This also means all these files **must** exist.
+
+Note that `tags`, `paths`, `components`, `schemas`, `requests` and `definitions` are all directories and therefore, all of the yaml files inside them are considered as one of their respectives. This means that you can have X files with any name inside `paths/` and as long as they are valid OpenAPI path definitions they are be good to go!
 
