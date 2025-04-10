@@ -72,6 +72,17 @@ func MergeYAMLFiles(basePath string, filePaths map[string][]string) (OpenAPI, er
 				for k, v := range node.(map[string]interface{}) {
 					result.Components[k] = v
 				}
+			case "examples":
+				if result.Components == nil {
+					result.Components = make(map[string]interface{})
+				}
+				if result.Components["examples"] == nil {
+					result.Components["examples"] = make(map[string]interface{})
+				}
+				for k, v := range node.(map[string]interface{}) {
+					result.Components["examples"].(map[string]interface{})[k] = v
+				}
+
 			case "requests":
 				if result.Components == nil {
 					result.Components = make(map[string]interface{})
